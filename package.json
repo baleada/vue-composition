@@ -1,0 +1,33 @@
+{
+  "name": "@baleada/composition",
+  "version": "0.0.0",
+  "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
+  "main": "index.js",
+  "scripts": {
+    "vue": "node scripts/generateVue.js",
+    "react": "node scripts/generateReact.js",
+    "babelify": "node scripts/emptyLib.js && npx babel src --out-dir lib",
+    "prepare": "npm run cf && npm run index && npm run babelify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/baleada/composition.git"
+  },
+  "keywords": [
+    "baleada"
+  ],
+  "author": "AlexVipond",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/baleada/composition/issues"
+  },
+  "homepage": "https://gitlab.com/baleada/composition#readme",
+  "dependencies": {
+    "@baleada/logic": "0.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0"
+  }
+}
