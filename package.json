@@ -21,7 +21,10 @@
     "url": "git+https://gitlab.com/baleada/composition.git"
   },
   "keywords": [
-    "baleada"
+    "baleada",
+    "vue composition function",
+    "react hook",
+    "svelte hook",
   ],
   "author": "AlexVipond",
   "license": "MIT",
