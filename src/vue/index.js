@@ -9,6 +9,7 @@ import usePoppable from './src/vue/usePoppable.js'
 import useSearchable from './src/vue/useSearchable.js'
 import useSyncable from './src/vue/useSyncable.js'
 import useTouchable from './src/vue/useTouchable.js'
+import util from './src/vue/util'
 
 export {
   useAnimatable,
@@ -22,4 +23,5 @@ export {
   useSearchable,
   useSyncable,
   useTouchable,
+  util,
 }

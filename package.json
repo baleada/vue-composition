@@ -24,7 +24,7 @@
     "baleada",
     "vue composition function",
     "react hook",
-    "svelte hook",
+    "svelte hook"
   ],
   "author": "AlexVipond",
   "license": "MIT",
@@ -33,7 +33,8 @@
   },
   "homepage": "https://gitlab.com/baleada/composition#readme",
   "dependencies": {
-    "@baleada/logic": "0.0.0"
+    "@baleada/logic": "0.0.0",
+    "on-change": "^1.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",

@@ -69,6 +69,12 @@ Object.defineProperty(exports, "useTouchable", {
     return _useTouchable.default;
   }
 });
+Object.defineProperty(exports, "util", {
+  enumerable: true,
+  get: function get() {
+    return _util.default;
+  }
+});
 
 var _useAnimatable = _interopRequireDefault(require("./src/svelte/useAnimatable.js"));
 
@@ -91,5 +97,7 @@ var _useSearchable = _interopRequireDefault(require("./src/svelte/useSearchable.
 var _useSyncable = _interopRequireDefault(require("./src/svelte/useSyncable.js"));
 
 var _useTouchable = _interopRequireDefault(require("./src/svelte/useTouchable.js"));
+
+var _util = _interopRequireDefault(require("./src/svelte/util"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

@@ -9,6 +9,7 @@ import usePoppable from './src/react/usePoppable.js'
 import useSearchable from './src/react/useSearchable.js'
 import useSyncable from './src/react/useSyncable.js'
 import useTouchable from './src/react/useTouchable.js'
+import util from './src/react/util'
 
 export {
   useAnimatable,
@@ -22,4 +23,5 @@ export {
   useSearchable,
   useSyncable,
   useTouchable,
+  util,
 }

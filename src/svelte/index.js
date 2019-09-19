@@ -9,6 +9,7 @@ import usePoppable from './src/svelte/usePoppable.js'
 import useSearchable from './src/svelte/useSearchable.js'
 import useSyncable from './src/svelte/useSyncable.js'
 import useTouchable from './src/svelte/useTouchable.js'
+import util from './src/svelte/util'
 
 export {
   useAnimatable,
@@ -22,4 +23,5 @@ export {
   useSearchable,
   useSyncable,
   useTouchable,
+  util,
 }
