@@ -11,4 +11,5 @@ export default function use${libraryName} (state, options) {\n\
 }\n`
   },
   react: () => '',
+  svelte: () => '',
 }

@@ -3,6 +3,7 @@ const fs = require('fs')
 function generateIndex (framework) {
   const fnxns = fs
           .readdirSync(`./src/${framework}`)
+          .filter(file => file !== 'index.js')
           .map(fnxn => ({
             path: `./src/${framework}/${fnxn}`,
             name: fnxn.split('.')[0],
@@ -11,7 +12,7 @@ function generateIndex (framework) {
         exported = fnxns.reduce((exported, fnxn) => `${exported}  ${fnxn.name},\n`, 'export {\n') + '}'
 
   fs.writeFileSync(
-    `./src/${framework}.js`,
+    `./src/${framework}/index.js`,
     `\
 ${imported}\n${exported}\n\
 `

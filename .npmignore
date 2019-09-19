@@ -3,7 +3,6 @@
 
 # Except these files
 !lib/**/*.js
-!index.js
-!vue.js
-!react.js
-!svelte.js
+!vue/**/*.js
+!react/**/*.js
+!svelte/**/*.js

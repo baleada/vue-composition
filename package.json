@@ -2,12 +2,19 @@
   "name": "@baleada/composition",
   "version": "0.0.0",
   "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "vue": "node scripts/generateVue.js",
-    "react": "node scripts/generateReact.js",
-    "babelify": "node scripts/emptyLib.js && npx babel src --out-dir lib",
-    "prepare": "npm run cf && npm run index && npm run babelify"
+    "vue": "node scripts/generateFramework.js 'vue'",
+    "react": "node scripts/generateFramework.js 'react'",
+    "svelte": "node scripts/generateFramework.js 'svelte'",
+    "framework": "npm run vue && npm run react && npm run svelte",
+    "babelify-vue": "npx babel src/vue --out-dir vue",
+    "babelify-react": "npx babel src/react --out-dir react",
+    "babelify-svelte": "npx babel src/svelte --out-dir svelte",
+    "babelify-index": "npx babel src/index.js --out-file lib/index.js",
+    "babelify-all": "npm run babelify-vue && npm run babelify-react && npm run babelify-svelte && npm run babelify-index",
+    "babelify": "node scripts/emptyLib.js && npm run babelify-all",
+    "prepare": "npm run framework && npm run babelify"
   },
   "repository": {
     "type": "git",
@@ -28,6 +35,7 @@
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-private-methods": "^7.6.0",
     "@babel/preset-env": "^7.6.0"
   }
 }
