@@ -4,17 +4,21 @@
   "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
   "main": "lib/index.js",
   "scripts": {
-    "vue": "node scripts/generateFramework.js 'vue'",
-    "react": "node scripts/generateFramework.js 'react'",
-    "svelte": "node scripts/generateFramework.js 'svelte'",
-    "framework": "npm run vue && npm run react && npm run svelte",
+    "gen-vue": "node scripts/generateFramework.js 'vue'",
+    "gen-react": "node scripts/generateFramework.js 'react'",
+    "gen-svelte": "node scripts/generateFramework.js 'svelte'",
+    "gen-all": "npm run gen-vue && npm run gen-react && npm run gen-svelte",
+    "empty-vue": "node scripts/emptyDir.js 'vue'",
+    "empty-react": "node scripts/emptyDir.js 'react'",
+    "empty-svelte": "node scripts/emptyDir.js 'svelte'",
+    "empty-lib": "node scripts/emptyDir.js 'lib'",
+    "empty-all": "npm run empty-vue && npm run empty-react && npm run empty-svelte && npm run empty-lib",
     "babelify-vue": "npx babel src/vue --out-dir vue",
     "babelify-react": "npx babel src/react --out-dir react",
     "babelify-svelte": "npx babel src/svelte --out-dir svelte",
     "babelify-index": "npx babel src/index.js --out-file lib/index.js",
     "babelify-all": "npm run babelify-vue && npm run babelify-react && npm run babelify-svelte && npm run babelify-index",
-    "babelify": "node scripts/emptyLib.js && npm run babelify-all",
-    "prepare": "npm run framework && npm run babelify"
+    "prepare": "npm run gen-all && npm run empty-all && npm run babelify-all"
   },
   "repository": {
     "type": "git",
