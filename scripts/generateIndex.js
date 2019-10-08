@@ -5,7 +5,7 @@ function generateIndex (framework) {
           .readdirSync(`./src/${framework}`)
           .filter(file => file !== 'index.js')
           .map(fnxn => ({
-            path: `./src/${framework}/${fnxn}`,
+            path: `./${fnxn}`,
             name: fnxn.split('.')[0],
           })),
         imported = fnxns.reduce((imported, fnxn) => `${imported}import ${fnxn.name} from '${fnxn.path}'\n`, ''),

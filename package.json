@@ -30,7 +30,11 @@
     "react hook",
     "svelte hook"
   ],
-  "author": "AlexVipond",
+  "author": {
+    "name": "Alex Vipond",
+    "email": "hello@alexvipond.dev",
+    "url": "https://alexvipond.dev"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/baleada/composition/issues"
@@ -45,5 +49,6 @@
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-private-methods": "^7.6.0",
     "@babel/preset-env": "^7.6.0"
-  }
+  },
+  "sideEffects": "false"
 }

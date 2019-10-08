@@ -69,12 +69,6 @@ Object.defineProperty(exports, "useTouchable", {
     return _useTouchable.default;
   }
 });
-Object.defineProperty(exports, "util", {
-  enumerable: true,
-  get: function get() {
-    return _util.default;
-  }
-});
 
 var _useAnimatable = _interopRequireDefault(require("./src/vue/useAnimatable.js"));
 
@@ -97,7 +91,5 @@ var _useSearchable = _interopRequireDefault(require("./src/vue/useSearchable.js"
 var _useSyncable = _interopRequireDefault(require("./src/vue/useSyncable.js"));
 
 var _useTouchable = _interopRequireDefault(require("./src/vue/useTouchable.js"));
-
-var _util = _interopRequireDefault(require("./src/vue/util"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

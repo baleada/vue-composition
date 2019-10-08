@@ -69,12 +69,6 @@ Object.defineProperty(exports, "useTouchable", {
     return _useTouchable.default;
   }
 });
-Object.defineProperty(exports, "util", {
-  enumerable: true,
-  get: function get() {
-    return _util.default;
-  }
-});
 
 var _useAnimatable = _interopRequireDefault(require("./src/react/useAnimatable.js"));
 
@@ -97,7 +91,5 @@ var _useSearchable = _interopRequireDefault(require("./src/react/useSearchable.j
 var _useSyncable = _interopRequireDefault(require("./src/react/useSyncable.js"));
 
 var _useTouchable = _interopRequireDefault(require("./src/react/useTouchable.js"));
-
-var _util = _interopRequireDefault(require("./src/react/util"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
