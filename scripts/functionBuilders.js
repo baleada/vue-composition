@@ -2,7 +2,7 @@ module.exports = {
   vue: className => {
   return `\
 import { reactive } from '@vue/composition-api'\n\
-import ${className} from '@baleada/logic/lib/classes/${className}'\n\
+import { ${className} } from '@baleada/logic'\n\
 \n\
 export default function use${className} (state, options) {\n\
   const instance = new ${className}(state, options),\n\
@@ -13,7 +13,7 @@ export default function use${className} (state, options) {\n\
   },
   react: className => `\
 import { useReducer } from "react"\n\
-import ${className} from '@baleada/logic/lib/classes/${className}'\n\
+import { ${className} } from '@baleada/logic'\n\
 import onChange from 'on-change'\n\
 \n\
 let store\n\
