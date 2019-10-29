@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useTouchable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function useTouchable(state, options) {
-  var instance = new _logic.Touchable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Touchable from '@baleada/logic/lib/classes/Touchable';
+export default function useTouchable(state, options) {
+  var instance = new Touchable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }

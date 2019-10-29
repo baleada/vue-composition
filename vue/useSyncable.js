@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useSyncable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function useSyncable(state, options) {
-  var instance = new _logic.Syncable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Syncable from '@baleada/logic/lib/classes/Syncable';
+export default function useSyncable(state, options) {
+  var instance = new Syncable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }

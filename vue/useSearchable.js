@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useSearchable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function useSearchable(state, options) {
-  var instance = new _logic.Searchable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Searchable from '@baleada/logic/lib/classes/Searchable';
+export default function useSearchable(state, options) {
+  var instance = new Searchable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }

@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useObservable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function useObservable(state, options) {
-  var instance = new _logic.Observable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Observable from '@baleada/logic/lib/classes/Observable';
+export default function useObservable(state, options) {
+  var instance = new Observable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }

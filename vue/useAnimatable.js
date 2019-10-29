@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useAnimatable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function useAnimatable(state, options) {
-  var instance = new _logic.Animatable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Animatable from '@baleada/logic/lib/classes/Animatable';
+export default function useAnimatable(state, options) {
+  var instance = new Animatable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }

@@ -1,18 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useCopiable;
-
-var _react = require("react");
-
-var _logic = require("@baleada/logic");
-
-var _onChange = _interopRequireDefault(require("on-change"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -21,15 +6,22 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function useCopiable(state, options) {
-  var _useReducer = (0, _react.useReducer)(function (x) {
+import { useReducer } from "react";
+import Copiable from '@baleada/logic/lib/classes/Copiable';
+import onChange from 'on-change';
+var store;
+export default function useCopiable(state, options) {
+  var _useReducer = useReducer(function (x) {
     return x + 1;
   }, 0),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       _ = _useReducer2[0],
       forceUpdate = _useReducer2[1],
-      instance = new _logic.Copiable(state, options),
-      reactiveInstance = (0, _onChange.default)(instance, forceUpdate);
+      instance = store || new Copiable(state, options),
+      reactiveInstance = onChange(instance, function (path, value) {
+    store = value;
+    forceUpdate();
+  });
 
   return reactiveInstance;
 }

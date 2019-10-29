@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useCompletable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function useCompletable(state, options) {
-  var instance = new _logic.Completable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Completable from '@baleada/logic/lib/classes/Completable';
+export default function useCompletable(state, options) {
+  var instance = new Completable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }

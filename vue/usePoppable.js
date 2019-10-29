@@ -1,16 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = usePoppable;
-
-var _compositionApi = require("@vue/composition-api");
-
-var _logic = require("@baleada/logic");
-
-function usePoppable(state, options) {
-  var instance = new _logic.Poppable(state, options),
-      reactiveInstance = (0, _compositionApi.reactive)(instance);
+import { reactive } from '@vue/composition-api';
+import Poppable from '@baleada/logic/lib/classes/Poppable';
+export default function usePoppable(state, options) {
+  var instance = new Poppable(state, options),
+      reactiveInstance = reactive(instance);
   return reactiveInstance;
 }
