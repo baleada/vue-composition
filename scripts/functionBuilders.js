@@ -12,21 +12,12 @@ export default function use${className} (state, options) {\n\
 }\n`
   },
   react: className => `\
-import { useReducer } from "react"\n\
 import { ${className} } from '@baleada/logic'\n\
-import onChange from 'on-change'\n\
-\n\
-let store\n\
+import useReactive from '../util/react/useReactive'\n\
 \n\
 export default function use${className} (state, options) {\n\
-  const [_, forceUpdate] = useReducer(x => x + 1, 0),\n\
-        instance = store || new ${className}(state, options),\n\
-        reactiveInstance = onChange(instance, (path, value) => {\n\
-          store = value\n\
-          forceUpdate()\n\
-        })\n\
-\n\
-  return reactiveInstance\n\
+  const instance = new ${className}(state, options)\n\
+  return useReactive(instance)\n\
 }\n`,
   svelte: className => '',
 }
