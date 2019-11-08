@@ -1,6 +1,8 @@
-const generateLogic = require('./generateLogic'),
+const generateClasses = require('./generateClasses'),
+      generateSubclasses = require('./generateSubclasses'),
       generateFrameworkIndex = require('./generateFrameworkIndex'),
       framework = process.argv[process.argv.length - 1]
 
-generateLogic(framework)
+generateClasses(framework)
+generateSubclasses(framework)
 generateFrameworkIndex(framework)

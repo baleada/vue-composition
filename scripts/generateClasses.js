@@ -1,6 +1,6 @@
 const fs = require('fs'),
       classBuilders = require('./classBuilders'),
-      classes = require('../data/classes.js')
+      { classes } = require('@baleada/logic/metadata')
 
 module.exports = function(framework) {
   classes.forEach(({ name, usesDom, needsCleanup }) => {
@@ -8,7 +8,7 @@ module.exports = function(framework) {
     writeFunction(name, composition, framework)
   })
 
-  console.log(`Generated ${classes.length} ${framework} functions`)
+  console.log(`Generated ${classes.length} ${framework} useClass functions`)
 }
 
 function writeFunction (name, composition, framework) {
