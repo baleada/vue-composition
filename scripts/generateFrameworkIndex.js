@@ -1,9 +1,9 @@
 const fs = require('fs')
 
 module.exports = function(framework) {
-  const logics = getFiles(framework, 'logic'),
+  const classes = getFiles(framework, 'classes'),
         composeds = getFiles(framework, 'composed'),
-        all = logics.concat(composeds),
+        all = classes.concat(composeds),
         imported = all.reduce((imported, fnxn) => `${imported}import ${fnxn.name} from '${fnxn.path}'\n`, ''),
         exported = all.reduce((exported, fnxn) => `${exported}  ${fnxn.name},\n`, 'export {\n') + '}'
 
