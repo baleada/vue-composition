@@ -1,6 +1,6 @@
-const { generateFunctions } = require('./generateFunctions'),
-      { generateIndex } = require('./generateIndex'),
+const generateLogic = require('./generateLogic'),
+      generateFrameworkIndex = require('./generateFrameworkIndex'),
       framework = process.argv[process.argv.length - 1]
 
-generateFunctions(framework)
-generateIndex(framework)
+generateLogic(framework)
+generateFrameworkIndex(framework)

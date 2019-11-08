@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-function generateIndex (framework) {
+module.exports = function(framework) {
   const fnxns = fs
           .readdirSync(`./src/${framework}`)
           .filter(file => file !== 'index.js')
@@ -19,8 +19,4 @@ ${imported}\n${exported}\n\
   )
 
   console.log(`Indexed ${fnxns.length} ${framework} functions.`)
-}
-
-module.exports = {
-  generateIndex
 }
