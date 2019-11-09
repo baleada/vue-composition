@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://gitlab.com/baleada/composition/issues"
   },
-  "homepage": "https://baleada.netlify,com/docs/composition",
+  "homepage": "https://baleada.netlify,com",
   "dependencies": {
     "@baleada/logic": "^0.1.0",
     "on-change": "^1.6.2"
