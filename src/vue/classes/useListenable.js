@@ -1,13 +1,16 @@
-import { reactive, onMounted, onBeforeUnmount } from '@vue/composition-api'
+import { reactive, beforeUnMounted } from '@vue/composition-api'
 import { Listenable } from '@baleada/logic'
 
 export default function useListenable (state, options) {
-  let reactiveInstance = {}
+  const reactiveInstance = reactive({})
   onMounted(() => {
-    const instance = new Listenable(state, options)
-    reactiveInstance = reactive(instance)
+    state = resolveRef(state)
+    options = resolveOptionsRefs(options)
+    const instance = new Listenable(state, options),
+          provisions = toProvisions(instance)
+
+    assignProvisions(reactiveInstance, provisions)
   })
   onBeforeUnmount(() => reactiveInstance.stop())
-
   return reactiveInstance
 }

@@ -1,6 +1,6 @@
 module.exports = {
   vue: ({ name, usesDOM, needsCleanup }) => {
-    const vueImport = `import { reactive${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', beforeUnMounted' : ''} } from '@vue/composition-api'`,
+    const vueImport = `import { reactive${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', beforeUnMounted' : ''} } from '@vue/composition-api'\n`,
           utilImport = usesDOM
             ? `import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'\n`
             : '',
@@ -14,7 +14,7 @@ module.exports = {
   onMounted(() => {\n\
     state = resolveRef(state)\n\
     options = resolveOptionsRefs(options)\n\
-    const instance = new Listenable(state, options),\n\
+    const instance = new ${name}(state, options),\n\
           provisions = toProvisions(instance)\n\
 \n\
     assignProvisions(reactiveInstance, provisions)\n\

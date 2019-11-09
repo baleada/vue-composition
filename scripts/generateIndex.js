@@ -1,22 +1,28 @@
 const fs = require('fs')
 
-module.exports = function(framework) {
-  const fnxns = fs
-          .readdirSync(`./src/${framework}`)
+module.exports = function(filesPath, options = {}) {
+  options = {
+    outfile: `${filesPath}/index`,
+    ...options
+  }
+
+  const { outfile, importPath } = options,
+        files = fs
+          .readdirSync(`./${filesPath}`)
           .filter(file => file !== 'index.js')
-          .map(fnxn => ({
-            path: `./${fnxn}`,
-            name: fnxn.split('.')[0],
+          .map(file => ({
+            path: importPath ? `./${importPath}/${file}` : `./${file}`,
+            name: file.split('.')[0],
           })),
-        imported = fnxns.reduce((imported, fnxn) => `${imported}import ${fnxn.name} from '${fnxn.path}'\n`, ''),
-        exported = fnxns.reduce((exported, fnxn) => `${exported}  ${fnxn.name},\n`, 'export {\n') + '}'
+        imported = files.reduce((imported, file) => `${imported}import ${file.name} from '${file.path}'\n`, ''),
+        exported = files.reduce((exported, file) => `${exported}  ${file.name},\n`, 'export {\n') + '}'
 
   fs.writeFileSync(
-    `./src/${framework}/index.js`,
+    `./${outfile}.js`,
     `\
 ${imported}\n${exported}\n\
 `
   )
 
-  console.log(`Indexed ${fnxns.length} ${framework} functions.`)
+  console.log(`Indexed ${files.length} files in ${filesPath}.`)
 }

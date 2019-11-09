@@ -1,7 +1,7 @@
-import assignProvisions from './assignProvisions'
-import resolveOptionsRefs from './resolveOptionsRefs'
-import resolveRef from './resolveRef'
-import toProvisions from './toProvisions'
+import assignProvisions from './assignProvisions.js'
+import resolveOptionsRefs from './resolveOptionsRefs.js'
+import resolveRef from './resolveRef.js'
+import toProvisions from './toProvisions.js'
 
 export {
   assignProvisions,
