@@ -1,4 +1,5 @@
-import { reactive, beforeUnMounted } from '@vue/composition-api'
+import { reactive, onMounted, beforeUnMounted } from '@vue/composition-api'
+import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'
 import { Delayable } from '@baleada/logic'
 
 export default function useDelayable (state, options) {
@@ -6,7 +7,7 @@ export default function useDelayable (state, options) {
   onMounted(() => {
     state = resolveRef(state)
     options = resolveOptionsRefs(options)
-    const instance = new Listenable(state, options),
+    const instance = new Delayable(state, options),
           provisions = toProvisions(instance)
 
     assignProvisions(reactiveInstance, provisions)

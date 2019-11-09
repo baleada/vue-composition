@@ -2,14 +2,7 @@ import { reactive } from '@vue/composition-api'
 import { Editable } from '@baleada/logic'
 
 export default function useEditable (state, options) {
-  const reactiveInstance = reactive({})
-  onMounted(() => {
-    state = resolveRef(state)
-    options = resolveOptionsRefs(options)
-    const instance = new Listenable(state, options),
-          provisions = toProvisions(instance)
-
-    assignProvisions(reactiveInstance, provisions)
-  })
+  const instance = new Editable(state, options),
+        reactiveInstance = reactive(instance)
   return reactiveInstance
 }

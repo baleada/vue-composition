@@ -5,11 +5,7 @@ module.exports = {
             ? `import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'\n`
             : '',
           init = usesDOM
-            ? `
-  const instance = new ${name}(state, options),\n\
-        reactiveInstance = reactive(instance)\n\
-`
-            : `\
+            ? `\
   const reactiveInstance = reactive({})\n\
   onMounted(() => {\n\
     state = resolveRef(state)\n\
@@ -19,6 +15,10 @@ module.exports = {
 \n\
     assignProvisions(reactiveInstance, provisions)\n\
   })\n\
+`
+            : `\
+  const instance = new ${name}(state, options),\n\
+        reactiveInstance = reactive(instance)\n\
 `,
           cleanup = needsCleanup ? '  onBeforeUnmount(() => reactiveInstance.stop())\n' : ''
 

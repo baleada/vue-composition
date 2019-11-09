@@ -3,8 +3,8 @@ const fs = require('fs'),
       { classes } = require('@baleada/logic/metadata')
 
 module.exports = function(framework) {
-  classes.forEach(({ name, usesDom, needsCleanup }) => {
-    const composition = classBuilders[framework]({ name, usesDom, needsCleanup })
+  classes.forEach(({ name, usesDOM, needsCleanup }) => {
+    const composition = classBuilders[framework]({ name, usesDOM, needsCleanup })
     writeFunction(name, composition, framework)
   })
 

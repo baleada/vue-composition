@@ -1,4 +1,5 @@
-import { reactive } from '@vue/composition-api'
+import { reactive, onMounted } from '@vue/composition-api'
+import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'
 import { Animatable } from '@baleada/logic'
 
 export default function useAnimatable (state, options) {
@@ -6,7 +7,7 @@ export default function useAnimatable (state, options) {
   onMounted(() => {
     state = resolveRef(state)
     options = resolveOptionsRefs(options)
-    const instance = new Listenable(state, options),
+    const instance = new Animatable(state, options),
           provisions = toProvisions(instance)
 
     assignProvisions(reactiveInstance, provisions)

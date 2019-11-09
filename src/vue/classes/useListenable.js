@@ -1,4 +1,5 @@
-import { reactive, beforeUnMounted } from '@vue/composition-api'
+import { reactive, onMounted, beforeUnMounted } from '@vue/composition-api'
+import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'
 import { Listenable } from '@baleada/logic'
 
 export default function useListenable (state, options) {
