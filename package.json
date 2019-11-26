@@ -1,6 +1,6 @@
 {
   "name": "@baleada/composition",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
   "main": "lib/index.js",
   "scripts": {
