@@ -36,7 +36,7 @@ ${cleanup}\
   },
   react: ({ name }) => `\
 import { ${name} } from '@baleada/logic'\n\
-import useReactive from '../util/react/useReactive'\n\
+import useReactive from '../util/useReactive'\n\
 \n\
 export default function use${name} (state, options) {\n\
   const instance = new ${name}(state, options)\n\
