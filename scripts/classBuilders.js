@@ -1,26 +1,27 @@
 module.exports = {
   vue: ({ name, usesDOM, needsCleanup }) => {
-    const vueImport = `import { reactive${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', beforeUnMounted' : ''} } from '@vue/composition-api'\n`,
+    const vueImport = `import { ref${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', beforeUnMounted' : ''} } from '@vue/composition-api'\n`,
           utilImport = usesDOM
             ? `import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'\n`
             : '',
           init = usesDOM
             ? `\
-  const reactiveInstance = reactive({})\n\
+  const reactiveInstance = ref({})\n\
   onMounted(() => {\n\
     state = resolveRef(state)\n\
     options = resolveOptionsRefs(options)\n\
-    const instance = new ${name}(state, options),\n\
-          provisions = toProvisions(instance)\n\
+    const instance = new ${name}(state, options)\n\
+          // provisions = toProvisions(instance)\n\
 \n\
-    assignProvisions(reactiveInstance, provisions)\n\
+    reactiveInstance.value = instance
+    // assignProvisions(reactiveInstance, provisions)\n\
   })\n\
 `
             : `\
   const instance = new ${name}(state, options),\n\
-        reactiveInstance = reactive(instance)\n\
+        reactiveInstance = ref(instance)\n\
 `,
-          cleanup = needsCleanup ? '  onBeforeUnmount(() => reactiveInstance.stop())\n' : ''
+          cleanup = needsCleanup ? '  onBeforeUnmount(() => reactiveInstance.value.stop())\n' : ''
 
     return `\
 ${vueImport}\
