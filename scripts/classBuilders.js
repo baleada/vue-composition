@@ -1,8 +1,8 @@
 module.exports = {
   vue: ({ name, usesDOM, needsCleanup }) => {
-    const vueImport = `import { ref${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', beforeUnMounted' : ''} } from '@vue/composition-api'\n`,
+    const vueImport = `import { ref${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', onBeforeUnmount' : ''} } from '@vue/composition-api'\n`,
           utilImport = usesDOM
-            ? `import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'\n`
+            ? `import { resolveRef, resolveOptionsRefs } from '../util'\n`
             : '',
           init = usesDOM
             ? `\

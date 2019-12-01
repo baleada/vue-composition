@@ -1,5 +1,5 @@
-import { ref, onMounted, beforeUnMounted } from '@vue/composition-api'
-import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'
+import { ref, onMounted, onBeforeUnmount } from '@vue/composition-api'
+import { resolveRef, resolveOptionsRefs } from '../util'
 import { Delayable } from '@baleada/logic'
 
 export default function useDelayable (state, options) {

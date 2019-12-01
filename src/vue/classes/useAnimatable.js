@@ -1,5 +1,5 @@
 import { ref, onMounted } from '@vue/composition-api'
-import { toProvisions, resolveRef, resolveOptionsRefs, assignProvisions } from '../util'
+import { resolveRef, resolveOptionsRefs } from '../util'
 import { Animatable } from '@baleada/logic'
 
 export default function useAnimatable (state, options) {
