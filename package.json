@@ -1,6 +1,6 @@
 {
   "name": "@baleada/composition",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
   "main": "lib/index.js",
   "scripts": {
@@ -13,9 +13,11 @@
   },
   "keywords": [
     "baleada",
-    "vue composition function",
-    "react hook",
-    "svelte hook"
+    "vue",
+    "composition function",
+    "react",
+    "hook",
+    "svelte"
   ],
   "author": {
     "name": "Alex Vipond",
