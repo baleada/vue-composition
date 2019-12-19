@@ -6,8 +6,8 @@ module.exports = function(framework) {
     const composition = `\
 import { ${name} } from '@baleada/logic/factories'\n\
 \n\
-export default function use${name} (state, options) {\n\
-  return new ${name}(state, options)\n\
+export default function use${capitalize(name)} (state, options) {\n\
+  return ${name}(state, options)\n\
 }\n\
 `
     writeFunction(name, composition, framework)
@@ -16,9 +16,13 @@ export default function use${name} (state, options) {\n\
   console.log(`Generated ${factories.length} ${framework} useFactory functions`)
 }
 
+function capitalize (word) {
+  return word.length > 0 ? `${word[0].toUpperCase()}${word.slice(1)}` : word
+}
+
 function writeFunction (name, composition, framework) {
   fs.writeFileSync(
-    `./src/${framework}/factories/use${name}.js`,
+    `./src/${framework}/factories/use${capitalize(name)}.js`,
     composition
   )
 }

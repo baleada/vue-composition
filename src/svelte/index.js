@@ -9,9 +9,9 @@ import useListenable from './classes/useListenable.js'
 import useNavigable from './classes/useNavigable.js'
 import useSearchable from './classes/useSearchable.js'
 import useTogglable from './classes/useTogglable.js'
-import usemarkupable from './factories/usemarkupable.js'
-import userenamable from './factories/userenamable.js'
-import usereorderable from './factories/usereorderable.js'
+import useMarkupable from './factories/useMarkupable.js'
+import useRenamable from './factories/useRenamable.js'
+import useReorderable from './factories/useReorderable.js'
 
 export {
   useAnimatable,
@@ -25,7 +25,7 @@ export {
   useNavigable,
   useSearchable,
   useTogglable,
-  usemarkupable,
-  userenamable,
-  usereorderable,
+  useMarkupable,
+  useRenamable,
+  useReorderable,
 }

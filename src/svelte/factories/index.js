@@ -1,9 +1,9 @@
-import usemarkupable from './usemarkupable.js'
-import userenamable from './userenamable.js'
-import usereorderable from './usereorderable.js'
+import useMarkupable from './useMarkupable.js'
+import useRenamable from './useRenamable.js'
+import useReorderable from './useReorderable.js'
 
 export {
-  usemarkupable,
-  userenamable,
-  usereorderable,
+  useMarkupable,
+  useRenamable,
+  useReorderable,
 }
