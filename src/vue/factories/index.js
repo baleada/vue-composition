@@ -1,9 +1,6 @@
-import useMarkupable from './useMarkupable.js'
-import useRenamable from './useRenamable.js'
-import useReorderable from './useReorderable.js'
-
-export {
-  useMarkupable,
-  useRenamable,
-  useReorderable,
-}
+export { default as useDeleteable } from './useDeleteable.js'
+export { default as useInsertable } from './useInsertable.js'
+export { default as useMarkupable } from './useMarkupable.js'
+export { default as useRenameable } from './useRenameable.js'
+export { default as useReorderable } from './useReorderable.js'
+export { default as useReplaceable } from './useReplaceable.js'

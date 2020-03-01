@@ -1,6 +1,6 @@
 {
   "name": "@baleada/composition",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
   "main": "lib/index.js",
   "scripts": {
@@ -33,10 +33,10 @@
     "on-change": "^1.6.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@babel/plugin-proposal-private-methods": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-private-methods": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@baleada/prepare": "0.0.2",
     "fast-async": "^6.3.8"
   },

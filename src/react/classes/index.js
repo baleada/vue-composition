@@ -1,25 +1,10 @@
-import useAnimatable from './useAnimatable.js'
-import useCompletable from './useCompletable.js'
-import useCopiable from './useCopiable.js'
-import useDelayable from './useDelayable.js'
-import useEditable from './useEditable.js'
-import useFetchable from './useFetchable.js'
-import useIdentifiableGoTrue from './useIdentifiableGoTrue.js'
-import useListenable from './useListenable.js'
-import useNavigable from './useNavigable.js'
-import useSearchable from './useSearchable.js'
-import useTogglable from './useTogglable.js'
-
-export {
-  useAnimatable,
-  useCompletable,
-  useCopiable,
-  useDelayable,
-  useEditable,
-  useFetchable,
-  useIdentifiableGoTrue,
-  useListenable,
-  useNavigable,
-  useSearchable,
-  useTogglable,
-}
+export { default as useAnimateable } from './useAnimateable.js'
+export { default as useCompleteable } from './useCompleteable.js'
+export { default as useCopyable } from './useCopyable.js'
+export { default as useDelayable } from './useDelayable.js'
+export { default as useFetchable } from './useFetchable.js'
+export { default as useIdentifyableGoTrue } from './useIdentifyableGoTrue.js'
+export { default as useListenable } from './useListenable.js'
+export { default as useNavigateable } from './useNavigateable.js'
+export { default as useRecognizeable } from './useRecognizeable.js'
+export { default as useSearchable } from './useSearchable.js'

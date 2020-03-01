@@ -1,7 +1,2 @@
-import useForceUpdate from './useForceUpdate.js'
-import useReactive from './useReactive.js'
-
-export {
-  useForceUpdate,
-  useReactive,
-}
+export { default as useForceUpdate } from './useForceUpdate.js'
+export { default as useReactive } from './useReactive.js'
