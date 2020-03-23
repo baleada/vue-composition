@@ -88,3 +88,8 @@ sw.*
 
 # Published version
 lib
+
+# Generated
+src/classes
+src/factories
+src/index.js
