@@ -1,5 +1,3 @@
-# `@baleada/composition`
+# `@baleada/composition-vue`
 
-Composition functions (a.k.a. hooks) for the Baleada toolkit.
-
-[See the Baleada docs](https://baleada/netlify.com) for more guidance.
+Functions that expose @baleada/logic libraries for component composition in Vue

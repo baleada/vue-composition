@@ -1,23 +1,20 @@
 {
-  "name": "@baleada/composition",
-  "version": "0.4.0",
-  "description": "Functions that expose @baleada/logic libraries for component composition in front-end frameworks",
+  "name": "@baleada/composition-vue",
+  "version": "0.5.0",
+  "description": "Functions that expose @baleada/logic libraries for component composition in Vue",
   "main": "lib/index.js",
   "scripts": {
-    "babelify-index": "npx babel src/index.js --out-file lib/index.js",
-    "prepare": "node scripts/prepare.js && npm run babelify-index"
+    "prepare": "node scripts/prepare.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/baleada/composition.git"
+    "url": "git+https://gitlab.com/baleada/composition-vue.git"
   },
   "keywords": [
     "baleada",
     "vue",
     "composition function",
-    "react",
-    "hook",
-    "svelte"
+    "hook"
   ],
   "author": {
     "name": "Alex Vipond",
@@ -26,22 +23,24 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/baleada/composition/issues"
+    "url": "https://gitlab.com/baleada/composition-vue/issues"
   },
   "homepage": "https://baleada.netlify,com",
-  "dependencies": {
-    "on-change": "^1.6.2"
-  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-private-methods": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@baleada/prepare": "0.0.2",
-    "fast-async": "^6.3.8"
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "fast-async": "^6.3.8",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-vue": "^5.1.6"
   },
   "peerDependencies": {
-    "@baleada/logic": "0.x"
+    "@baleada/logic": "0.x",
+    "vue": "2.x",
+    "@vue/composition-api": "0.x"
   },
   "sideEffects": false
 }

@@ -1,18 +1,28 @@
-const generateIndex = require('./generateIndex'),
-      generateFramework = require('./generateFramework'),
-      babelifyFramework = require('./babelifyFramework'),
-      empty = require('./emptyDir')
+const { generateIndex, empty } = require('@baleada/prepare'),
+      generateClasses = require('./generateClasses'),
+      generateFactories = require('./generateFactories'),
+      generateTopLevelIndex = require('./generateTopLevelIndex'),
+      compile = require('./compile')
 
 function prepare () {
-  /* Generate files */
-  generateFramework('react')
-  generateFramework('svelte')
-  generateFramework('vue')
+  /* Empty destinations */
+  empty(`src/classes`)
+  empty(`src/factories`)
 
-  /* Transform files */
-  babelifyFramework('react')
-  babelifyFramework('svelte')
-  babelifyFramework('vue')
+  /* Generate files */
+  generateClasses()
+  generateFactories()
+
+  /* Index all */
+  generateIndex(`src/util`)
+  generateIndex(`src/classes`)
+  generateIndex(`src/factories`)
+
+  /* Top level index */
+  generateTopLevelIndex()
+
+  /* Rollup */
+  compile()
 }
 
 prepare()

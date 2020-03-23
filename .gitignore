@@ -88,12 +88,3 @@ sw.*
 
 # Published version
 lib
-vue
-react
-svelte
-!src/vue
-!src/react
-!src/svelte
-!src/util/vue
-!src/util/react
-!src/util/svelte
