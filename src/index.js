@@ -1,35 +1,16 @@
-import useAnimateable from './classes/useAnimateable.js'
-import useCompleteable from './classes/useCompleteable.js'
-import useCopyable from './classes/useCopyable.js'
-import useDelayable from './classes/useDelayable.js'
-import useFetchable from './classes/useFetchable.js'
-import useIdentifyableGoTrue from './classes/useIdentifyableGoTrue.js'
-import useListenable from './classes/useListenable.js'
-import useNavigateable from './classes/useNavigateable.js'
-import useRecognizeable from './classes/useRecognizeable.js'
-import useSearchable from './classes/useSearchable.js'
-import useDeleteable from './factories/useDeleteable.js'
-import useInsertable from './factories/useInsertable.js'
-import useMarkupable from './factories/useMarkupable.js'
-import useRenameable from './factories/useRenameable.js'
-import useReorderable from './factories/useReorderable.js'
-import useReplaceable from './factories/useReplaceable.js'
-
-export {
-  useAnimateable,
-  useCompleteable,
-  useCopyable,
-  useDelayable,
-  useFetchable,
-  useIdentifyableGoTrue,
-  useListenable,
-  useNavigateable,
-  useRecognizeable,
-  useSearchable,
-  useDeleteable,
-  useInsertable,
-  useMarkupable,
-  useRenameable,
-  useReorderable,
-  useReplaceable,
-}
+export { default as useAnimateable } from './classes/useAnimateable.js'
+export { default as useCompleteable } from './classes/useCompleteable.js'
+export { default as useCopyable } from './classes/useCopyable.js'
+export { default as useDelayable } from './classes/useDelayable.js'
+export { default as useFetchable } from './classes/useFetchable.js'
+export { default as useIdentifyableGoTrue } from './classes/useIdentifyableGoTrue.js'
+export { default as useListenable } from './classes/useListenable.js'
+export { default as useNavigateable } from './classes/useNavigateable.js'
+export { default as useRecognizeable } from './classes/useRecognizeable.js'
+export { default as useSearchable } from './classes/useSearchable.js'
+export { default as useDeleteable } from './factories/useDeleteable.js'
+export { default as useInsertable } from './factories/useInsertable.js'
+export { default as useMarkupable } from './factories/useMarkupable.js'
+export { default as useRenameable } from './factories/useRenameable.js'
+export { default as useReorderable } from './factories/useReorderable.js'
+export { default as useReplaceable } from './factories/useReplaceable.js'

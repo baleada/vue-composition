@@ -17,7 +17,7 @@ function writeFunction (name, composition) {
   )
 }
 
-const classBuilder = ({ name, usesDOM, needsCleanup }) => {
+function classBuilder ({ name, usesDOM, needsCleanup }) {
   const vueImport = `import { ref${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', onBeforeUnmount' : ''} } from '@vue/composition-api'\n`,
         utilImport = usesDOM
           ? `import { resolveRef, resolveOptionsRefs } from '../util'\n`
@@ -52,4 +52,4 @@ ${cleanup}\
 return reactiveInstance\n\
 }\n\
 `
-},
+}

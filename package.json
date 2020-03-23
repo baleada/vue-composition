@@ -31,16 +31,18 @@
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-private-methods": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
-    "@baleada/prepare": "0.0.2",
+    "@baleada/prepare": "^0.1.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "fast-async": "^6.3.8",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-vue": "^5.1.6"
+    "rollup-plugin-babel": "^4.4.0"
   },
   "peerDependencies": {
     "@baleada/logic": "0.x",
     "vue": "2.x",
     "@vue/composition-api": "0.x"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "vue-template-compiler": "^2.6.11"
+  }
 }

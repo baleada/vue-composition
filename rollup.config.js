@@ -1,12 +1,12 @@
-import vue from 'rollup-plugin-vue'
+// import vue from 'rollup-plugin-vue'
 import babel from 'rollup-plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 
 export default {
   external: [
     '@vue/composition-api',
-    '@baleada/icons-vue',
-    '@baleada/composition-vue',
+    '@baleada/logic/factories',
+    '@baleada/logic',
     'vue',
   ],
   input: [
@@ -17,7 +17,7 @@ export default {
     format: 'esm',
   },
   plugins: [
-    vue(),
+    // vue(),
     babel({
       exclude: 'node_modules/**'
     }),
