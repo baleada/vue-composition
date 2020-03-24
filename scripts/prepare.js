@@ -5,6 +5,7 @@ const { generateIndex, empty } = require('@baleada/prepare'),
 
 function prepare () {
   /* Empty destinations */
+  empty('lib')
   empty('src/classes')
   empty('src/factories')
 

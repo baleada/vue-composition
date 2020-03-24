@@ -1,4 +1,3 @@
-// import vue from 'rollup-plugin-vue'
 import babel from 'rollup-plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 
@@ -17,9 +16,8 @@ export default {
     format: 'esm',
   },
   plugins: [
-    // vue(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules',
     }),
     resolve(),
   ]
