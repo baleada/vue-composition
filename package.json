@@ -1,6 +1,6 @@
 {
   "name": "@baleada/composition-vue",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Functions that expose @baleada/logic libraries for component composition in Vue",
   "main": "lib/index.js",
   "scripts": {
