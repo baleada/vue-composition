@@ -1,6 +1,6 @@
 {
-  "name": "@baleada/composition-vue",
-  "version": "0.5.4",
+  "name": "@baleada/vue-composition",
+  "version": "0.6.0",
   "description": "Functions that expose @baleada/logic libraries for component composition in Vue",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/baleada/composition-vue.git"
+    "url": "git+https://gitlab.com/baleada/vue-composition.git"
   },
   "keywords": [
     "baleada",
@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/baleada/composition-vue/issues"
+    "url": "https://gitlab.com/baleada/vue-composition/issues"
   },
   "homepage": "https://baleada.netlify,com",
   "devDependencies": {

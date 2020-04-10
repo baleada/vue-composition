@@ -1,3 +1,5 @@
-# `@baleada/composition-vue`
+# `@baleada/vue-composition`
 
-Functions that expose @baleada/logic libraries for component composition in Vue
+Functions that expose Baleada Logic libraries for component composition in Vue.
+
+See the [Baleada docs](https://baleada.netlify.com) for more guidance.
