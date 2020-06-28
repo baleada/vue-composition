@@ -1,4 +1,4 @@
-import { isRef } from '@vue/composition-api'
+import { isRef } from 'vue'
 
 export default function(possibleRef) {
   return isRef(possibleRef)

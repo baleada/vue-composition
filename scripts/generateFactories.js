@@ -4,10 +4,11 @@ const fs = require('fs'),
 module.exports = function() {
   factories.forEach(({ name }) => {
     const composition = `\
+import { ref } from 'vue'\n\
 import { ${name} } from '@baleada/logic'\n\
 \n\
 export default function use${capitalize(name)} (state, options) {\n\
-  return ${name}(state, options)\n\
+  return ref(${name}(state, options))\n\
 }\n\
 `
     writeFunction(name, composition)
