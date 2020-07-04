@@ -88,6 +88,8 @@ sw.*
 
 # Published version
 lib
+classes
+factories
 
 # Generated
 src/classes
