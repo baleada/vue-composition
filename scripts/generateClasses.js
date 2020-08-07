@@ -18,7 +18,7 @@ function writeFunction (name, composition) {
 }
 
 function classBuilder ({ name, usesDOM, needsCleanup }) {
-  const vueImport = `import { ref${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', onBeforeUnmount' : ''} } from '@vue/composition-api'\n`,
+  const vueImport = `import { ref${ usesDOM ? ', onMounted' : ''}${ needsCleanup ? ', onBeforeUnmount' : ''} } from 'vue'\n`,
         utilImport = usesDOM
           ? `import { resolveRef, resolveOptionsRefs } from '../util'\n`
           : '',
@@ -36,8 +36,8 @@ onMounted(() => {\n\
 })\n\
 `
           : `\
-const instance = new ${name}(state, options),\n\
-      reactiveInstance = ref(instance)\n\
+  const instance = new ${name}(state, options),\n\
+        reactiveInstance = ref(instance)\n\
 `,
         cleanup = needsCleanup ? '  onBeforeUnmount(() => reactiveInstance.value.stop())\n' : ''
 
@@ -49,7 +49,7 @@ import { ${name} } from '@baleada/logic'\n\
 export default function use${name} (state, options) {\n\
 ${init}\
 ${cleanup}\
-return reactiveInstance\n\
+  return reactiveInstance\n\
 }\n\
 `
 }

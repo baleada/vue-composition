@@ -1,8 +1,9 @@
 {
   "name": "@baleada/vue-composition",
-  "version": "0.6.1",
+  "version": "0.8.1",
   "description": "Functions that expose @baleada/logic libraries for component composition in Vue",
   "main": "lib/index.js",
+  "module": "lib/index.js",
   "scripts": {
     "prepare": "node scripts/prepare.js"
   },
@@ -39,8 +40,7 @@
   },
   "peerDependencies": {
     "@baleada/logic": "0.x",
-    "vue": "2.x",
-    "@vue/composition-api": "0.x"
+    "vue": "3.x"
   },
   "sideEffects": false
 }
