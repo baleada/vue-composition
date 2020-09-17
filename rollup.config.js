@@ -1,10 +1,11 @@
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 const metadata = require('@baleada/logic/metadata')
 
 const plugins = [
         babel({
           exclude: 'node_modules',
+          babelHelpers: 'inline', // 'runtime' was causing problems, possibly because babel may not be transpiling anything in this case
         }),
         resolve(),
       ]
@@ -14,6 +15,7 @@ export default [
     external: [
       '@baleada/logic',
       'vue',
+      /@babel\/runtime/,
     ],
     input: [
       'src/index.js',
