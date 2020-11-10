@@ -1,14 +1,12 @@
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
-const metadata = require('@baleada/logic/metadata')
+import virtual from '@baleada/rollup-plugin-virtual'
+import getFilesToIndex from '@baleada/source-transform-files-to-index'
+import toIndex from './source-transforms/toIndex'
+import toClassCompositionFunctions from './source-transforms/toClassCompositionFunctions'
+import toFactoryCompositionFunctions from './source-transforms/toFactoryCompositionFunctions'
 
-const plugins = [
-        babel({
-          exclude: 'node_modules',
-          babelHelpers: 'inline', // 'runtime' was causing problems, possibly because babel may not be transpiling anything in this case
-        }),
-        resolve(),
-      ]
+const utilFilesToIndex = getFilesToIndex({ test: ({ id }) => /src\/util\/[^\/]+.js$/.test(id) })
 
 export default [
   {
@@ -24,18 +22,28 @@ export default [
       dir: 'lib',
       format: 'esm',
     },
-    plugins,
+    plugins: [
+      resolve(),
+      virtual({
+        transform: toIndex,
+        test: ({ id }) => id.endsWith('src/index.js'),
+      }),
+      virtual({
+        transform: toClassCompositionFunctions,
+        test: ({ id }) => id.endsWith('src/classes/index.js'),
+      }),
+      virtual({
+        transform: toFactoryCompositionFunctions,
+        test: ({ id }) => id.endsWith('src/factories/index.js'),
+      }),
+      virtual({
+        transform: utilFilesToIndex,
+        test: ({ id }) => id.endsWith('src/util'),
+      }),
+      babel({
+        exclude: 'node_modules',
+        babelHelpers: 'runtime',
+      }),
+    ]
   },
-  // ...metadata.classes.map(tool => ({
-  //   external: '@baleada/logic',
-  //   input: `src/classes/use${tool.name}.js`,
-  //   output: { file: `classes/use${tool.name}.esm.js`, format: 'esm' },
-  //   plugins,
-  // })),
-  // ...metadata.factories.map(tool => ({
-  //   external: '@baleada/logic',
-  //   input: `src/factories/use${tool.name}.js`,
-  //   output: { file: `factories/use${tool.name}.esm.js`, format: 'esm' },
-  //   plugins,
-  // }))
 ]
