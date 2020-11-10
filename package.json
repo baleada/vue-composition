@@ -1,12 +1,11 @@
 {
   "name": "@baleada/vue-composition",
   "version": "0.8.3",
-  "description": "Functions that expose @baleada/logic libraries for component composition in Vue",
+  "description": "Functions that expose Baleada Logic classes and factories for component composition in Vue",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "scripts": {
-    "prepare": "rollup --config rollup.config.js",
-    "link": "npm link @baleada/logic"
+    "prepare": "rollup --config rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +32,7 @@
     "@babel/core": "^7.8.4",
     "@babel/helpers": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.8.4",
     "@baleada/prepare": "^0.1.1",
     "@baleada/rollup-plugin-virtual": "^0.0.5",
@@ -44,7 +44,6 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/runtime": "^7.12.5",
     "@baleada/logic": "^0.15.20",
     "vue": "^3.0.2"
