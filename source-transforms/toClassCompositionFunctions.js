@@ -19,7 +19,7 @@ ${classCompositionFunctions}\n\
 `
 }
 
-function toClassCompositionFunction ({ name, usesDOM, needsCleanup }) {
+export function toClassCompositionFunction ({ name, usesDOM, needsCleanup }) {
   const init = usesDOM
           ? `\
 const reactiveInstance = ref({})\n\

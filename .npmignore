@@ -3,5 +3,3 @@
 
 # Except these files
 !lib/**/*.js
-!classes/**/*.js
-!factories/**/*.js

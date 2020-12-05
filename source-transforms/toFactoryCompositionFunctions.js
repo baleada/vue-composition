@@ -17,7 +17,7 @@ ${factoryCompositionFunctions}\n\
 `
 }
 
-function toFactoryCompositionFunction ({ name }) {
+export function toFactoryCompositionFunction ({ name }) {
   return `\
 export function use${capitalize(name)} (state, options) {\n\
   return ref(${name}(state, options))\n\
