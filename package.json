@@ -6,8 +6,10 @@
   "main": "lib/index.cjs",
   "module": "lib/index.js",
   "exports": {
-    "require": "./lib/index.cjs",
-    "import": "./lib/index.js"
+    "import": "./lib/index.js",
+    "util": {
+      "import": "./util/index.js"
+    }
   },
   "scripts": {
     "prepare": "rollup --config rollup.config.js",
@@ -35,14 +37,14 @@
   },
   "homepage": "https://baleada.netlify,com",
   "devDependencies": {
-    "@baleada/prepare": "^0.4.6",
+    "@baleada/prepare": "^0.4.10",
     "rollup": "^2.33.1",
     "uvu": "^0.5.1"
   },
   "sideEffects": false,
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@baleada/logic": "^0.15.22",
+    "@baleada/logic": "^0.15.23",
     "vue": "^3.0.2"
   }
 }
