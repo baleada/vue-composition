@@ -1,6 +1,6 @@
 {
   "name": "@baleada/vue-composition",
-  "version": "0.8.14",
+  "version": "0.8.15",
   "description": "Functions that expose Baleada Logic classes and factories for component composition in Vue",
   "type": "module",
   "main": "lib/index.cjs",
