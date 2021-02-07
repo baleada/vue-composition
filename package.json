@@ -44,7 +44,7 @@
   "sideEffects": false,
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@baleada/logic": "^0.16.14",
+    "@baleada/logic": "^0.16.15",
     "vue": "^3.0.2"
   }
 }
