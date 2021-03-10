@@ -1,7 +1,7 @@
 import { configureable } from '@baleada/prepare'
 import toIndex from './source-transforms/toIndex'
 import toClassCompositionFunctions from './source-transforms/toClassCompositionFunctions'
-import toFactoryCompositionFunctions from './source-transforms/toFactoryCompositionFunctions'
+import toPipeCompositionFunctions from './source-transforms/toPipeCompositionFunctions'
 
 const esm = configureable('rollup')
         .delete({ targets: 'lib/*', verbose: true })
@@ -17,13 +17,12 @@ const esm = configureable('rollup')
         })
         .virtual({
           transform: toClassCompositionFunctions,
-          test: ({ id }) => /(^|\/)src\/classes\/index\.js/.test(id),
+          test: ({ id }) => /(^|\/)src\/classes\.js/.test(id),
         })
         .virtual({
-          transform: toFactoryCompositionFunctions,
-          test: ({ id }) => /(^|\/)src\/factories\/index\.js/.test(id),
+          transform: toPipeCompositionFunctions,
+          test: ({ id }) => /(^|\/)src\/pipes\.js/.test(id),
         })
-        .virtualIndex('src/util')
         .esm({ file: 'lib/index.js', target: 'browser' })
         .configure()
 

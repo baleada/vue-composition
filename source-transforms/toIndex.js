@@ -1,17 +1,16 @@
 import metadata from '@baleada/logic/metadata'
 
 export default function toIndex () {
-
-  const { classes, factories } = metadata,
+  const { classes, pipes } = metadata,
         classesNames = classes.map(({ name }) => `use${name}`).join(', '),
-        factoriesNames = factories.map(({ name }) => `use${capitalize(name)}`).join(', '),
-        classesImport = `import { ${classesNames} } from './classes/index.js'`,
-        factoriesImport = `import { ${factoriesNames} } from './factories/index.js'`,
-        allExport = `export { ${classesNames}, ${factoriesNames} }`
+        pipesNames = pipes.map(name => `use${capitalize(name)}`).join(', '),
+        classesImport = `import { ${classesNames} } from './classes.js'`,
+        pipesImport = `import { ${pipesNames} } from './pipes.js'`,
+        allExport = `export { ${classesNames}, ${pipesNames} }`
 
   return `\
 ${classesImport}\n\
-${factoriesImport}\n\
+${pipesImport}\n\
 \n\
 ${allExport}\n\
 `
