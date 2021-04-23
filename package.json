@@ -1,10 +1,10 @@
 {
   "name": "@baleada/vue-composition",
   "version": "0.9.0",
-  "description": "Functions that expose Baleada Logic classes and factories for component composition in Vue",
-  "type": "module",
+  "description": "Functions that expose Baleada Logic for composition in Vue.",
   "main": "lib/index.cjs",
   "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "exports": {
     "import": "./lib/index.js",
     "util": {
@@ -12,8 +12,9 @@
     }
   },
   "scripts": {
-    "prepare": "rollup --config rollup.config.js",
-    "test:only": "run() { npx uvu tests/$2 $1.test.js$; }; run",
+    "generate": "node scripts/generate.js",
+    "prepare": "npm run generate && tsc && rollup --config rollup.config.ts",
+    "test:only": "run() { uvu tests/$2 $1.test.js$; }; run",
     "test": "npm run test:only ."
   },
   "repository": {
@@ -37,14 +38,18 @@
   },
   "homepage": "https://baleada.netlify,com",
   "devDependencies": {
-    "@baleada/prepare": "^0.4.43",
-    "rollup": "^2.33.1",
+    "@baleada/prepare": "^0.5.1",
+    "@types/node": "^14.14.41",
+    "rollup": "^2.45.2",
+    "tailwindcss": "^2.1.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4",
     "uvu": "^0.5.1"
   },
   "sideEffects": false,
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "@baleada/logic": "^0.18.0",
-    "vue": "^3.0.2"
+    "@babel/runtime": "^7.13.17",
+    "@baleada/logic": "^0.19.4",
+    "vue": "^3.0.11"
   }
 }
