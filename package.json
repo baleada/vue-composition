@@ -37,6 +37,7 @@
   "devDependencies": {
     "@baleada/prepare": "^0.5.6",
     "@types/node": "^14.14.41",
+    "dotenv": "^10.0.0",
     "esbuild": "^0.12.19",
     "esbuild-register": "^2.6.0",
     "rollup": "^2.56.2",
@@ -46,7 +47,7 @@
   "sideEffects": false,
   "dependencies": {
     "@babel/runtime": "^7.13.17",
-    "@baleada/logic": "file:baleada-logic-0.20.1.tgz",
+    "@baleada/logic": "^0.20.2",
     "vue": "^3.2.2"
   }
 }
