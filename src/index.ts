@@ -30,10 +30,10 @@ export function useDelayable (effect: DelayableEffect, options?: DelayableOption
   return reactiveInstance as unknown as Ref<Delayable>
 }
 
-export function useDispatchable<Type extends ListenableSupportedEventType> (type: Type, options?: DispatchableOptions): Ref<Dispatchable<Type>> {
-  const instance = new Dispatchable<Type>(type, options)
+export function useDispatchable<EventType extends ListenableSupportedEventType> (type: EventType, options?: DispatchableOptions): Ref<Dispatchable<EventType>> {
+  const instance = new Dispatchable<EventType>(type, options)
   const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Dispatchable<Type>>
+  return reactiveInstance as unknown as Ref<Dispatchable<EventType>>
 }
 
 export function useFetchable (resource: string, options?: FetchableOptions): Ref<Fetchable> {
