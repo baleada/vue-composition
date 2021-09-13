@@ -24,7 +24,7 @@ export function toLogicMetadata (): { classes: ClassMetadatum[], pipes: string[]
           pipes,
         }
 
-  console.log(`toMetadata: Scraped metadata for ${metadata.classes.length} classes and ${metadata.pipes.length} pipes`)
+  console.log(`toLogicMetadata: Scraped metadata for ${metadata.classes.length} classes and ${metadata.pipes.length} pipes`)
 
   return metadata
 }
