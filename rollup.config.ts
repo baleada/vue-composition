@@ -7,7 +7,7 @@ const external = [
       esm = new configureable.Rollup()
         .input('src/index.ts')
         .delete({ targets: 'lib/*', verbose: true })
-        .typescript()
+        .esbuild()
         .resolve()
         .external(external)
         .esm({ file: 'lib/index.js', target: 'browser' })
