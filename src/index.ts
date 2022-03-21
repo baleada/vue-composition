@@ -1,7 +1,7 @@
 import { ref, onBeforeUnmount } from 'vue'
 import type { Ref } from 'vue'
-import { Animateable, Completeable, Copyable, Delayable, Dispatchable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Sanitizeable, Searchable, Storeable } from '@baleada/logic'
-import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DispatchableOptions, DispatchableStatus, DispatchOptions, DrawableState, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FetchOptions, FetchOptionsApi, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableClickcombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffectApi, RecognizeOptions, ResolveableGetPromise, ResolveableOptions, ResolveableStatus, SanitizeableOptions, SanitizeableStatus, SearchableOptions, SearchableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
+import { Animateable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Sanitizeable, Searchable, Storeable } from '@baleada/logic'
+import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableState, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FetchOptions, FetchOptionsApi, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableClickcombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffectApi, RecognizeOptions, ResolveableGetPromise, ResolveableOptions, ResolveableStatus, SanitizeableOptions, SanitizeableStatus, SearchableOptions, SearchableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
 
 export function useAnimateable (keyframes: AnimateableKeyframe[], options?: AnimateableOptions): Ref<Animateable> {
   const instance = new Animateable(keyframes, options)
@@ -28,12 +28,6 @@ export function useDelayable (effect: DelayableEffect, options?: DelayableOption
   const reactiveInstance = ref(instance)
   onBeforeUnmount(() => reactiveInstance.value.stop())
   return reactiveInstance as unknown as Ref<Delayable>
-}
-
-export function useDispatchable<EventType extends ListenableSupportedEventType> (type: EventType, options?: DispatchableOptions): Ref<Dispatchable<EventType>> {
-  const instance = new Dispatchable<EventType>(type, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Dispatchable<EventType>>
 }
 
 export function useDrawable (stroke: DrawableState, options?: DrawableOptions): Ref<Drawable> {
