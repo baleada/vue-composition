@@ -1,13 +1,20 @@
 import { ref, onBeforeUnmount } from 'vue'
 import type { Ref } from 'vue'
-import { Animateable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Sanitizeable, Searchable, Storeable } from '@baleada/logic'
-import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableState, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FetchOptions, FetchOptionsApi, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableClickcombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeOptions, ResolveableGetPromise, ResolveableOptions, ResolveableStatus, SanitizeableOptions, SanitizeableStatus, SearchableOptions, SearchableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
+import { Animateable, Broadcastable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Sanitizeable, Searchable, Shareable, Storeable } from '@baleada/logic'
+import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableState, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FetchOptions, FetchOptionsApi, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableClickcombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeOptions, ResolveableGetPromise, ResolveableOptions, ResolveableStatus, SanitizeableOptions, SanitizeableStatus, SearchableOptions, SearchableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
 
 export function useAnimateable (keyframes: AnimateableKeyframe[], options?: AnimateableOptions): Ref<Animateable> {
   const instance = new Animateable(keyframes, options)
   const reactiveInstance = ref(instance)
   onBeforeUnmount(() => reactiveInstance.value.stop())
   return reactiveInstance as unknown as Ref<Animateable>
+}
+
+export function useBroadcastable<State> (state: State, options?: BroadcastableOptions): Ref<Broadcastable<State>> {
+  const instance = new Broadcastable<State>(state, options)
+  const reactiveInstance = ref(instance)
+  onBeforeUnmount(() => reactiveInstance.value.stop())
+  return reactiveInstance as unknown as Ref<Broadcastable<State>>
 }
 
 export function useCompleteable (string: string, options?: CompleteableOptions): Ref<Completeable> {
@@ -97,8 +104,14 @@ export function useSearchable<Item extends string | object> (candidates: Item[],
   return reactiveInstance as unknown as Ref<Searchable<Item>>
 }
 
-export function useStoreable (key: string, options?: StoreableOptions): Ref<Storeable> {
-  const instance = new Storeable(key, options)
+export function useShareable (state: ShareData, options?: ShareableOptions): Ref<Shareable> {
+  const instance = new Shareable(state, options)
   const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Storeable>
+  return reactiveInstance as unknown as Ref<Shareable>
+}
+
+export function useStoreable<String extends string> (key: string, options?: StoreableOptions): Ref<Storeable<String>> {
+  const instance = new Storeable<String>(key, options)
+  const reactiveInstance = ref(instance)
+  return reactiveInstance as unknown as Ref<Storeable<String>>
 }
