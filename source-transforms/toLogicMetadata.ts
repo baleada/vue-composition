@@ -15,16 +15,17 @@ export type ClassMetadatum = {
   typeExports: string[],
 }
 
-export function toLogicMetadata (): { classes: ClassMetadatum[], pipes: string[] } {
-  const classes = readdirSync(`${relativePathToLogic}/src/classes`).filter(file => parse(file).ext === '.ts').map(file => parse(file).name),
-        pipes = [...new Set(readFileSync(`${relativePathToLogic}/src/pipes.ts`, 'utf8').match(/create\w+/g))],
+export function toLogicMetadata (): { classes: ClassMetadatum[] } {
+  const classes = readdirSync(`${relativePathToLogic}/src/classes`)
+          .filter(file => parse(file).ext === '.ts')
+          .map(file => parse(file).name)
+          .filter(name => name !== 'index'),
         classMetadata = toClassMetadata(classes),
         metadata = {
           classes: classMetadata,
-          pipes,
         }
 
-  console.log(`toLogicMetadata: Scraped metadata for ${metadata.classes.length} classes and ${metadata.pipes.length} pipes`)
+  console.log(`toLogicMetadata: Scraped metadata for ${metadata.classes.length} classes`)
 
   return metadata
 }
@@ -85,8 +86,8 @@ function toStateType (contents) {
 
 
 function toTypeExports (name: string): string[] {
-  const classesIndex = readFileSync(`${relativePathToLogic}/src/classes.ts`, 'utf8'),
-        typeExportsRE = new RegExp(`export type \{ (.*?) \} from '\.\/classes\/${name}'`)
+  const classesIndex = readFileSync(`${relativePathToLogic}/src/classes/index.ts`, 'utf8'),
+        typeExportsRE = new RegExp(`export type \{ (.*?) \} from '\.\/${name}'`)
 
   return classesIndex.match(typeExportsRE)[1].split(', ')
 }
