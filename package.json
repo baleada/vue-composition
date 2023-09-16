@@ -11,7 +11,7 @@
   "scripts": {
     "src": "node -r esbuild-register scripts/src.ts",
     "prepare": "npm run src && tsc && rollup --config rollup.config.ts --configPlugin typescript --bundleConfigAsCjs",
-    "test:only": "run() { uvu -r esbuild-register tests/$2 $1.test.js$; }; run",
+    "test:only": "run() { uvu -r esbuild-register tests/$2 $1.test.ts$; }; run",
     "test": "npm run test:only ."
   },
   "repository": {

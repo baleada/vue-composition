@@ -1,123 +1,117 @@
-import { ref, onBeforeUnmount } from 'vue'
-import type { Ref } from 'vue'
-import { Animateable, Broadcastable, Compareable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Sanitizeable, Searchable, Shareable, Storeable } from '@baleada/logic'
-import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompareableOptions, CompareableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableState, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableMousecombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeOptions, ResolveableGetPromise, ResolveableOptions, ResolveableStatus, SanitizeableOptions, SanitizeableStatus, SearchableOptions, SearchableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
+import { shallowReactive, onBeforeUnmount } from 'vue'
+import type { ShallowReactive } from 'vue'
+import { Animateable, Broadcastable, Compareable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Searchable, Shareable, Storeable } from '@baleada/logic'
+import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompareableOptions, CompareableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableStroke, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableMousecombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeOptions, ResolveableOptions, ResolveableStatus, SearchableOptions, SearchableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
 
-export function useAnimateable (keyframes: AnimateableKeyframe[], options?: AnimateableOptions): Ref<Animateable> {
-  const instance = new Animateable(keyframes, options)
-  const reactiveInstance = ref(instance)
-  onBeforeUnmount(() => reactiveInstance.value.stop())
-  return reactiveInstance as unknown as Ref<Animateable>
+export function useAnimateable<Value extends string | number | any[]> (keyframes: AnimateableKeyframe<Value>[], options?: AnimateableOptions): ShallowReactive<Animateable<Value>> {
+  const instance = new Animateable<Value>(keyframes, options)
+  const reactiveInstance = shallowReactive(instance)
+  onBeforeUnmount(() => reactiveInstance.stop())
+  return reactiveInstance
 }
 
-export function useBroadcastable<State> (state: State, options?: BroadcastableOptions): Ref<Broadcastable<State>> {
+export function useBroadcastable<State> (state: State, options?: BroadcastableOptions): ShallowReactive<Broadcastable<State>> {
   const instance = new Broadcastable<State>(state, options)
-  const reactiveInstance = ref(instance)
-  onBeforeUnmount(() => reactiveInstance.value.stop())
-  return reactiveInstance as unknown as Ref<Broadcastable<State>>
+  const reactiveInstance = shallowReactive(instance)
+  onBeforeUnmount(() => reactiveInstance.stop())
+  return reactiveInstance
 }
 
-export function useCompareable (string: string, options?: CompareableOptions): Ref<Compareable> {
+export function useCompareable (string: string, options?: CompareableOptions): ShallowReactive<Compareable> {
   const instance = new Compareable(string, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Compareable>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useCompleteable (string: string, options?: CompleteableOptions): Ref<Completeable> {
+export function useCompleteable (string: string, options?: CompleteableOptions): ShallowReactive<Completeable> {
   const instance = new Completeable(string, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Completeable>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useCopyable (string: string, options?: CopyableOptions): Ref<Copyable> {
+export function useCopyable (string: string, options?: CopyableOptions): ShallowReactive<Copyable> {
   const instance = new Copyable(string, options)
-  const reactiveInstance = ref(instance)
-  onBeforeUnmount(() => reactiveInstance.value.stop())
-  return reactiveInstance as unknown as Ref<Copyable>
+  const reactiveInstance = shallowReactive(instance)
+  onBeforeUnmount(() => reactiveInstance.stop())
+  return reactiveInstance
 }
 
-export function useDelayable (effect: DelayableEffect, options?: DelayableOptions): Ref<Delayable> {
+export function useDelayable (effect: DelayableEffect, options?: DelayableOptions): ShallowReactive<Delayable> {
   const instance = new Delayable(effect, options)
-  const reactiveInstance = ref(instance)
-  onBeforeUnmount(() => reactiveInstance.value.stop())
-  return reactiveInstance as unknown as Ref<Delayable>
+  const reactiveInstance = shallowReactive(instance)
+  onBeforeUnmount(() => reactiveInstance.stop())
+  return reactiveInstance
 }
 
-export function useDrawable (stroke: DrawableState, options?: DrawableOptions): Ref<Drawable> {
+export function useDrawable (stroke: DrawableStroke, options?: DrawableOptions): ShallowReactive<Drawable> {
   const instance = new Drawable(stroke, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Drawable>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useFetchable (resource: string, options?: FetchableOptions): Ref<Fetchable> {
+export function useFetchable (resource: string, options?: FetchableOptions): ShallowReactive<Fetchable> {
   const instance = new Fetchable(resource, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Fetchable>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useFullscreenable<ElementType extends Element> (getElement: FullscreenableGetElement<ElementType>, options?: FullscreenableOptions): Ref<Fullscreenable<ElementType>> {
+export function useFullscreenable<ElementType extends Element> (getElement: FullscreenableGetElement<ElementType>, options?: FullscreenableOptions): ShallowReactive<Fullscreenable<ElementType>> {
   const instance = new Fullscreenable<ElementType>(getElement, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Fullscreenable<ElementType>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useGrantable<DescriptorType extends PermissionDescriptor> (descriptor: DescriptorType, options?: GrantableOptions): Ref<Grantable<DescriptorType>> {
-  const instance = new Grantable<DescriptorType>(descriptor, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Grantable<DescriptorType>>
+export function useGrantable (descriptor: PermissionDescriptor, options?: GrantableOptions): ShallowReactive<Grantable> {
+  const instance = new Grantable(descriptor, options)
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useListenable<Type extends ListenableSupportedType, RecognizeableMetadata extends Record<any, any> = Record<any, any>> (type: Type, options?: ListenableOptions<Type, RecognizeableMetadata>): Ref<Listenable<Type, RecognizeableMetadata>> {
+export function useListenable<Type extends ListenableSupportedType, RecognizeableMetadata extends Record<any, any> = Record<any, any>> (type: Type, options?: ListenableOptions<Type, RecognizeableMetadata>): ShallowReactive<Listenable<Type, RecognizeableMetadata>> {
   const instance = new Listenable<Type, RecognizeableMetadata>(type, options)
-  const reactiveInstance = ref(instance)
-  onBeforeUnmount(() => reactiveInstance.value.stop())
-  return reactiveInstance as unknown as Ref<Listenable<Type, RecognizeableMetadata>>
+  const reactiveInstance = shallowReactive(instance)
+  onBeforeUnmount(() => reactiveInstance.stop())
+  return reactiveInstance
 }
 
-export function useNavigateable<Item> (array: Item[], options?: NavigateableOptions): Ref<Navigateable<Item>> {
+export function useNavigateable<Item> (array: Item[], options?: NavigateableOptions): ShallowReactive<Navigateable<Item>> {
   const instance = new Navigateable<Item>(array, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Navigateable<Item>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function usePickable<Item> (array: Item[], options?: PickableOptions): Ref<Pickable<Item>> {
+export function usePickable<Item> (array: Item[], options?: PickableOptions): ShallowReactive<Pickable<Item>> {
   const instance = new Pickable<Item>(array, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Pickable<Item>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useRecognizeable<Type extends ListenableSupportedType, Metadata extends Record<any, any>> (sequence: ListenEffectParam<Type>[], options?: RecognizeableOptions<Type, Metadata>): Ref<Recognizeable<Type, Metadata>> {
+export function useRecognizeable<Type extends ListenableSupportedType, Metadata extends Record<any, any>> (sequence: ListenEffectParam<Type>[], options?: RecognizeableOptions<Type, Metadata>): ShallowReactive<Recognizeable<Type, Metadata>> {
   const instance = new Recognizeable<Type, Metadata>(sequence, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Recognizeable<Type, Metadata>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useResolveable<Value> (getPromise: ResolveableGetPromise<Value>, options?: ResolveableOptions): Ref<Resolveable<Value>> {
+export function useResolveable<Value> (getPromise: () => Promise<Value>, options?: ResolveableOptions): ShallowReactive<Resolveable<Value>> {
   const instance = new Resolveable<Value>(getPromise, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Resolveable<Value>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useSanitizeable (html: string, options?: SanitizeableOptions): Ref<Sanitizeable> {
-  const instance = new Sanitizeable(html, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Sanitizeable>
-}
-
-export function useSearchable<Item extends string | object> (candidates: Item[], options?: SearchableOptions<Item>): Ref<Searchable<Item>> {
+export function useSearchable<Item extends string | object> (candidates: Item[], options?: SearchableOptions<Item>): ShallowReactive<Searchable<Item>> {
   const instance = new Searchable<Item>(candidates, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Searchable<Item>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useShareable (state: ShareData, options?: ShareableOptions): Ref<Shareable> {
-  const instance = new Shareable(state, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Shareable>
+export function useShareable (shareData: ShareData, options?: ShareableOptions): ShallowReactive<Shareable> {
+  const instance = new Shareable(shareData, options)
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }
 
-export function useStoreable<String extends string> (key: string, options?: StoreableOptions): Ref<Storeable<String>> {
+export function useStoreable<String extends string> (key: string, options?: StoreableOptions): ShallowReactive<Storeable<String>> {
   const instance = new Storeable<String>(key, options)
-  const reactiveInstance = ref(instance)
-  return reactiveInstance as unknown as Ref<Storeable<String>>
+  const reactiveInstance = shallowReactive(instance)
+  return reactiveInstance
 }

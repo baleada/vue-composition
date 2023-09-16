@@ -4,8 +4,8 @@ import type { ClassMetadatum } from './toLogicMetadata'
 const { classes } = toLogicMetadata()
 
 export function toClassCompositionFunctions () {
-  const vueImport = `import { ref, onBeforeUnmount } from 'vue'`,
-        vueTypesImport = `import type { Ref } from 'vue'`,
+  const vueImport = `import { shallowReactive, onBeforeUnmount } from 'vue'`,
+        vueTypesImport = `import type { ShallowReactive } from 'vue'`,
         logicImport = `import { ${classes.map(({ name }) => name).join(', ')} } from '@baleada/logic'`,
         logicTypesImport = `import type { ${classes.map(({ typeExports }) => typeExports).flat().join(', ')} } from '@baleada/logic'`,
         classCompositionFunctions = classes
@@ -22,7 +22,7 @@ ${classCompositionFunctions}
 `
 }
 
-function toClassCompositionFunction ({
+export function toClassCompositionFunction ({
   name,
   needsCleanup,
   generics: genericsArray,
@@ -41,15 +41,15 @@ function toClassCompositionFunction ({
           : '',
         init = `\
   const instance = new ${name}${genericsWithoutExtends}(${state}, options)
-  const reactiveInstance = ref(instance)
+  const reactiveInstance = shallowReactive(instance)
 `,
-        cleanup = needsCleanup ? '  onBeforeUnmount(() => reactiveInstance.value.stop())\n' : ''
+        cleanup = needsCleanup ? '  onBeforeUnmount(() => reactiveInstance.stop())\n' : ''
 
   return `\
-export function use${name}${generics} (${state}: ${stateType}, options?: ${name}Options${optionsGenerics}): Ref<${name}${genericsWithoutExtends}> {
+export function use${name}${generics} (${state}: ${stateType}, options?: ${name}Options${optionsGenerics}): ShallowReactive<${name}${genericsWithoutExtends}> {
 ${init}\
 ${cleanup}\
-  return reactiveInstance as unknown as Ref<${name}${genericsWithoutExtends}>
+  return reactiveInstance
 }\
 `
 }
