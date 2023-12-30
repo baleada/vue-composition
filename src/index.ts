@@ -1,4 +1,4 @@
-import { shallowReactive, onBeforeUnmount } from 'vue'
+import { shallowReactive, onScopeDispose } from 'vue'
 import type { ShallowReactive } from 'vue'
 import { Animateable, Broadcastable, Compareable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Shareable, Storeable } from '@baleada/logic'
 import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompareableOptions, CompareableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableStroke, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableMousecombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeOptions, ResolveableOptions, ResolveableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
@@ -6,14 +6,14 @@ import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, Animat
 export function useAnimateable<Value extends string | number | any[]> (keyframes: AnimateableKeyframe<Value>[], options?: AnimateableOptions): ShallowReactive<Animateable<Value>> {
   const instance = new Animateable<Value>(keyframes, options)
   const reactiveInstance = shallowReactive(instance)
-  onBeforeUnmount(() => reactiveInstance.stop())
+  onScopeDispose(() => reactiveInstance.stop())
   return reactiveInstance
 }
 
 export function useBroadcastable<State> (state: State, options?: BroadcastableOptions): ShallowReactive<Broadcastable<State>> {
   const instance = new Broadcastable<State>(state, options)
   const reactiveInstance = shallowReactive(instance)
-  onBeforeUnmount(() => reactiveInstance.stop())
+  onScopeDispose(() => reactiveInstance.stop())
   return reactiveInstance
 }
 
@@ -32,14 +32,14 @@ export function useCompleteable (string: string, options?: CompleteableOptions):
 export function useCopyable (string: string, options?: CopyableOptions): ShallowReactive<Copyable> {
   const instance = new Copyable(string, options)
   const reactiveInstance = shallowReactive(instance)
-  onBeforeUnmount(() => reactiveInstance.stop())
+  onScopeDispose(() => reactiveInstance.stop())
   return reactiveInstance
 }
 
 export function useDelayable (effect: DelayableEffect, options?: DelayableOptions): ShallowReactive<Delayable> {
   const instance = new Delayable(effect, options)
   const reactiveInstance = shallowReactive(instance)
-  onBeforeUnmount(() => reactiveInstance.stop())
+  onScopeDispose(() => reactiveInstance.stop())
   return reactiveInstance
 }
 
@@ -70,7 +70,7 @@ export function useGrantable (descriptor: PermissionDescriptor, options?: Granta
 export function useListenable<Type extends ListenableSupportedType, RecognizeableMetadata extends Record<any, any> = Record<any, any>> (type: Type, options?: ListenableOptions<Type, RecognizeableMetadata>): ShallowReactive<Listenable<Type, RecognizeableMetadata>> {
   const instance = new Listenable<Type, RecognizeableMetadata>(type, options)
   const reactiveInstance = shallowReactive(instance)
-  onBeforeUnmount(() => reactiveInstance.stop())
+  onScopeDispose(() => reactiveInstance.stop())
   return reactiveInstance
 }
 
