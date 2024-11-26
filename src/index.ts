@@ -1,5 +1,4 @@
-import { shallowReactive, onScopeDispose } from 'vue'
-import type { ShallowReactive } from 'vue'
+import { reactive, shallowReactive, onScopeDispose, type Reactive, type ShallowReactive } from 'vue'
 import { Animateable, Broadcastable, Compareable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Shareable, Storeable } from '@baleada/logic'
 import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompareableOptions, CompareableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableStroke, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableMousecombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, PickOptions, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeableEffectConfig, RecognizeableStopTarget, RecognizeOptions, ResolveableOptions, ResolveableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
 
@@ -49,9 +48,9 @@ export function useDrawable (stroke: DrawableStroke, options?: DrawableOptions):
   return reactiveInstance
 }
 
-export function useFetchable (resource: string, options?: FetchableOptions): ShallowReactive<Fetchable> {
-  const instance = new Fetchable(resource, options)
-  const reactiveInstance = shallowReactive(instance)
+export function useFetchable<ResolveableValue> (resource: string, options?: FetchableOptions): Reactive<Fetchable<ResolveableValue>> {
+  const instance = new Fetchable<ResolveableValue>(resource, options)
+  const reactiveInstance = reactive(instance)
   return reactiveInstance
 }
 
