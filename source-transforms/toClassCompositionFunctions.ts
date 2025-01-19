@@ -4,7 +4,7 @@ import type { ClassMetadatum } from './toLogicMetadata'
 const { classes } = toLogicMetadata()
 
 export function toClassCompositionFunctions () {
-  const vueImport = `import { reactive, shallowReactive, onScopeDispose, type Reactive, type ShallowReactive } from 'vue'`,
+  const vueImport = `import { reactive, onScopeDispose, type Reactive } from 'vue'`,
         logicImport = `import { ${classes.map(({ name }) => name).join(', ')} } from '@baleada/logic'`,
         logicTypesImport = `import type { ${classes.map(({ typeExports }) => typeExports).flat().join(', ')} } from '@baleada/logic'`,
         classCompositionFunctions = classes
@@ -39,12 +39,12 @@ export function toClassCompositionFunction ({
           : '',
         init = `\
   const instance = new ${name}${genericsWithoutExtends}(${state}, options)
-  const reactiveInstance = ${name === 'Fetchable' ? 'reactive' : 'shallowReactive'}(instance)
+  const reactiveInstance = reactive(instance)
 `,
         cleanup = needsCleanup ? '  onScopeDispose(() => reactiveInstance.stop())\n' : ''
 
   return `\
-export function use${name}${generics} (${state}: ${stateType}, options?: ${name}Options${optionsGenerics}): ${name === 'Fetchable' ? 'Reactive' : 'ShallowReactive'}<${name}${genericsWithoutExtends}> {
+export function use${name}${generics} (${state}: ${stateType}, options?: ${name}Options${optionsGenerics}): Reactive<${name}${genericsWithoutExtends}> {
 ${init}\
 ${cleanup}\
   return reactiveInstance
