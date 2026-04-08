@@ -1,6 +1,6 @@
 import { reactive, onScopeDispose, type Reactive } from 'vue'
-import { Animateable, Broadcastable, Compareable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Pickable, Recognizeable, Resolveable, Shareable, Storeable } from '@baleada/logic'
-import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompareableOptions, CompareableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableStroke, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableMousecombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, PickableOptions, PickableStatus, PickOptions, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeableEffectConfig, RecognizeableStopTarget, RecognizeOptions, ResolveableOptions, ResolveableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus } from '@baleada/logic'
+import { Animateable, Broadcastable, Compareable, Completeable, Copyable, Delayable, Drawable, Fetchable, Fullscreenable, Grantable, Listenable, Navigateable, Operateable, Pickable, Recognizeable, Resolveable, Shareable, Storeable, Transactable } from '@baleada/logic'
+import type { AnimateableKeyframe, AnimateableOptions, AnimateableStatus, AnimateFrame, AnimateFrameEffect, AnimateOptions, BroadcastableOptions, BroadcastableStatus, CompareableOptions, CompareableStatus, CompleteableOptions, CompleteableStatus, CompleteOptions, CopyableOptions, CopyableStatus, DelayableEffect, DelayableOptions, DelayableStatus, DrawableStroke, DrawableOptions, DrawableStatus, FetchableOptions, FetchableStatus, FullscreenableGetElement, FullscreenableOptions, FullscreenableStatus, GrantableOptions, GrantableStatus, ListenableSupportedType, ListenableSupportedEventType, ListenableKeycombo, ListenableMousecombo, ListenablePointercombo, ListenableOptions, ListenableStatus, ListenEffect, ListenEffectParam, ListenOptions, ListenableActive, NavigateableOptions, NavigateableStatus, OperateableOptions, OperateableStatus, OperationDescriptor, DefinedIDBObjectStore, PickableOptions, PickableStatus, PickOptions, RecognizeableOptions, RecognizeableStatus, RecognizeableEffect, RecognizeableEffectConfig, RecognizeableStopTarget, RecognizeOptions, ResolveableOptions, ResolveableStatus, ShareableOptions, ShareableStatus, StoreableOptions, StoreableStatus, TransactableOptions, TransactableStatus, OpenOptions, TransactOptions, TransactEffect } from '@baleada/logic'
 
 export function useAnimateable<Value extends string | number | any[]> (keyframes: AnimateableKeyframe<Value>[], options?: AnimateableOptions): Reactive<Animateable<Value>> {
   const instance = new Animateable<Value>(keyframes, options)
@@ -79,6 +79,13 @@ export function useNavigateable<Item> (array: Item[], options?: NavigateableOpti
   return reactiveInstance
 }
 
+export function useOperateable<StoredObject extends Record<any, any>> (objectStore: DefinedIDBObjectStore<StoredObject>, options?: OperateableOptions): Reactive<Operateable<StoredObject>> {
+  const instance = new Operateable<StoredObject>(objectStore, options)
+  const reactiveInstance = reactive(instance)
+  onScopeDispose(() => reactiveInstance.stop())
+  return reactiveInstance
+}
+
 export function usePickable<Item> (array: Item[], options?: PickableOptions): Reactive<Pickable<Item>> {
   const instance = new Pickable<Item>(array, options)
   const reactiveInstance = reactive(instance)
@@ -106,5 +113,12 @@ export function useShareable (shareData: ShareData, options?: ShareableOptions):
 export function useStoreable<String extends string> (key: string, options?: StoreableOptions): Reactive<Storeable<String>> {
   const instance = new Storeable<String>(key, options)
   const reactiveInstance = reactive(instance)
+  return reactiveInstance
+}
+
+export function useTransactable (name: string, options?: TransactableOptions): Reactive<Transactable> {
+  const instance = new Transactable(name, options)
+  const reactiveInstance = reactive(instance)
+  onScopeDispose(() => reactiveInstance.stop())
   return reactiveInstance
 }
